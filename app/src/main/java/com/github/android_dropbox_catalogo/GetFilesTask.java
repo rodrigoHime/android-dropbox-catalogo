@@ -90,7 +90,7 @@ public class GetFilesTask extends AsyncTask<Void, Long, Boolean> {
                 if (ent.thumbExists) {
                     // Add it to the list of thumbs we can choose from
                     DropboxAPI.DropboxInputStream stream =
-                            mApi.getThumbnailStream(ent.path, ThumbSize.ICON_256x256, ThumbFormat.JPEG);
+                            mApi.getThumbnailStream(ent.path, ThumbSize.BESTFIT_480x320, ThumbFormat.JPEG);
                     Bitmap bitmap = BitmapFactory.decodeStream(stream);
                     imageItems.add(new ImageItem(bitmap, ent.fileName()));
                     try {
@@ -172,7 +172,7 @@ public class GetFilesTask extends AsyncTask<Void, Long, Boolean> {
             mGridVIewAdapter.setData(imageItems);
         } else {
             // Couldn't download it, so show an error
-            // showToast(mErrorMsg);
+//             showToast(mErrorMsg);
         }
     }
 }
